@@ -50,7 +50,7 @@ export function AuthProvider({ children }: Readonly<{ children: ReactNode }>) {
       const userData = sessionService.getSession();
       
       if (!userData) {
-        logout(); // token pero invalido
+        setUser(null); // token pero invalido
         sessionService.clearSession();
       }
 
