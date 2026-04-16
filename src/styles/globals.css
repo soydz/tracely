@@ -3,9 +3,6 @@
 
 /*
  * HeroUI Theme Customization
- * Add this to your global.css after importing @heroui/styles
- * Only includes base variables from variables.css
- * @see https://heroui.com/docs/react/getting-started/theming
  */
 
 :root,
@@ -14,9 +11,9 @@
 [data-theme="light"],
 [data-theme="default"] {
     /* Theme Colors (Light Mode) */
-    --accent: oklch(57.74% 0.2091 273.85);
-    --accent-foreground: oklch(99.11% 0 0);
-    --background: oklch(97.02% 0.01 273.85);
+    --accent: oklch(76.65% 0.139 91.06);
+    --accent-foreground: oklch(14.96% 0 0);
+    --background: oklch(97.43% 0.006 75.41);
     --border: oklch(90% 0.01 273.85);
     --danger: oklch(65.32% 0.2375 28.14);
     --danger-foreground: oklch(99.11% 0 0);
@@ -26,7 +23,7 @@
     --field-foreground: oklch(21.03% 0.01 273.85);
     --field-placeholder: oklch(55.17% 0.02 273.85);
     --focus: oklch(57.74% 0.2091 273.85);
-    --foreground: oklch(21.03% 0.01 273.85);
+    --foreground: oklch(14.96% 0 0);
     --muted: oklch(55.17% 0.02 273.85);
     --overlay: oklch(100% 0.003 273.85);
     --overlay-foreground: oklch(21.03% 0.01 273.85);
@@ -47,7 +44,7 @@
 
     /* Border Radius */
     --radius: 0.5rem;
-    --field-radius: 0.75rem;
+    --field-radius: 1rem;
 
     /* Font Family */
     /* Make sure to load Inter font in your app */
@@ -58,9 +55,9 @@
 [data-theme="dark"] {
     color-scheme: dark;
     /* Theme Colors (Dark Mode) */
-    --accent: oklch(57.74% 0.2091 273.85);
-    --accent-foreground: oklch(99.11% 0 0);
-    --background: oklch(12% 0.01 273.85);
+    --accent: oklch(76.65% 0.139 91.06);
+    --accent-foreground: oklch(14.96% 0 0);
+    --background: oklch(14.96% 0 0);
     --border: oklch(28% 0.01 273.85);
     --danger: oklch(59.4% 0.2006 27.03);
     --danger-foreground: oklch(99.11% 0 0);
@@ -88,4 +85,24 @@
     --surface-tertiary-foreground: oklch(99.11% 0.01 273.85);
     --warning: oklch(82.03% 0.1416 78.74);
     --warning-foreground: oklch(21.03% 0.0059 78.74);
+}
+
+@layer components {
+    /* Afecta a los botones de HeroUI */
+    .button,
+    button[data-slot="base"] {
+        @apply py-5;
+    }
+
+    /* Afecta inputs de Aria/HeroUI */
+    input[data-slot="input"],
+    .react-aria-Input {
+        @apply py-3;
+    }
+
+    label,
+    .text-label,
+    [data-slot="label"] {
+        @apply text-muted text-sm mb-1.5 block;
+    }
 }
