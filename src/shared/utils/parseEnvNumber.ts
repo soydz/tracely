@@ -2,6 +2,6 @@ export function parseEnvNumber(
   value: string | undefined,
   fallback: number,
 ): number {
-  const parsed = parseInt(value || "");
-  return isNaN(parsed) ? fallback : parsed;
+  const parsed = Number.parseInt(value || "");
+  return Number.isNaN(parsed) ? fallback : parsed;
 }
