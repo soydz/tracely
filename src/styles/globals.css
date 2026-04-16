@@ -48,7 +48,7 @@
 
     /* Font Family */
     /* Make sure to load Inter font in your app */
-    --font-sans: var(--font-inter);
+    --font-sans: var(--font-manrope);
 }
 
 .dark,
@@ -88,6 +88,7 @@
 }
 
 @layer components {
+
     /* Afecta a los botones de HeroUI */
     .button,
     button[data-slot="base"] {
@@ -105,4 +106,26 @@
     [data-slot="label"] {
         @apply text-muted text-sm mb-1.5 block;
     }
+
+
+}
+
+@theme {
+    --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
+    --font-serif: var(--font-newreader), ui-serif, Georgia;
+}
+
+
+body {
+    font-family: var(--font-manrope), sans-serif;
+}
+
+/* 2. Aplicar Newreader exclusivamente a los títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-newreader), serif;
 }
