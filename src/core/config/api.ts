@@ -1,8 +1,11 @@
 import Cookies from "js-cookie";
-import type { BeforeRequestState, AfterResponseState } from "ky";
+import type { BeforeRequestState } from "ky";
 import ky from "ky";
 
 import { parseEnvNumber } from "@/shared/utils";
+
+import { authInterceptor } from "../api/interceptors/auth.interceptor";
+
 
 // URL base del backend
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -40,26 +43,7 @@ export const apiConfig = {
       },
     ],
     afterResponse: [
-      async ({ options, response, retryCount }: AfterResponseState) => {
-        // 401: token invalido/expirado
-        if (response.status === 401 && retryCount === 0) {
-          // limpia token invalido
-          Cookies.remove("tracely_token");
-        }
-
-        // 403: token valido pero sin permisos
-        if (response.status === 403) {
-          // TODO: redirigir/mostrar pagina/modal de error
-        }
-
-        // 5xx: errores del servidor
-        if (response.status >= 500 && retryCount === options.retry.limit) {
-          console.error(
-            "El servidor está teniendo problemas. Intenta más tarde.",
-          );
-          // TODO: implementar notificaciones toast
-        }
-      },
+      authInterceptor,
     ],
   },
 };
