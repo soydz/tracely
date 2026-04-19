@@ -8,6 +8,7 @@ export function formatCalendarDateToUTCISO(date: CalendarDate): string {
 }
 
 
-export function isValidFormat(date): boolean {
-    return date && /^\d{4}-\d{2}-\d{2}/.test(date);
+export function isValidFormat(date: string | undefined): boolean {
+    if (!date) return false;
+    return /^\d{4}-\d{2}-\d{2}/.test(date);
 }
