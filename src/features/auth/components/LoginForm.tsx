@@ -112,7 +112,7 @@ export function LoginForm() {
         <Separator className="flex-1" />
       </div>
 
-      <Button fullWidth className="flex flex-row gap-3 bg-white">
+      <Button fullWidth className="flex flex-row gap-3 bg-white text-accent-foreground">
         <GoogleIcon />
         Sign in with Google
       </Button>
