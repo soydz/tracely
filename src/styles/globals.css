@@ -93,6 +93,7 @@
     .button,
     button[data-slot="base"] {
         @apply py-5;
+        @apply text-background;
     }
 
     /* Afecta inputs de Aria/HeroUI */
