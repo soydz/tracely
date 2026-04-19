@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { startTransition } from "react";
 
 import { useAuth } from "@/core/contexts/AuthContext";
+import { sessionService } from "@/core/services/session.service";
 import { validateAndExtractUser } from "@/core/utils/auth";
 
 import { authService } from "../api/auth.service";
@@ -25,6 +26,8 @@ export function useLogin() {
         toast.danger("Invalid session token");
         return;
       }
+
+      sessionService.saveSession(response.token, response.fullName);
 
       // actualiza estado global
       login(user);
