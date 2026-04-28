@@ -1,4 +1,4 @@
-import { Button, Label, Input, Tabs, DatePicker, DateField, Calendar, Select, ListBox, Separator } from "@heroui/react";
+import { Button, Label, Input, Tabs, DatePicker, DateField, Calendar, Separator } from "@heroui/react";
 
 import { useForm, Controller } from "react-hook-form";
 
@@ -10,6 +10,8 @@ import { formatThousands, formatCalendarDateToUTCISO, isValidFormat } from "@/sh
 import { TransactionData, transactionSchema } from "../schemas/transaction.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCreateTransaction } from "../hooks/useTransactions";
+
+import { CategorySelector } from "@/features/categories/components/CategorySelector";
 
 interface TransactonFormProps {
     readonly onSuccess?: () => void;
@@ -38,21 +40,7 @@ export function TransactionForm({ onSuccess }: TransactonFormProps) {
         createTransaction(data, {
             onSuccess: () => onSuccess?.(),
         });
-
-        onSuccess?.();
     }
-
-    const CATEGORIES = [
-        { id: "food", label: "Food & Drinks" },
-        { id: "transport", label: "Transportation" },
-        { id: "entertainment", label: "Entertainment" },
-        { id: "shopping", label: "Shopping" },
-        { id: "salary", label: "Salary" },
-        { id: "investment", label: "Investment" },
-        { id: "health", label: "Health" },
-        { id: "others", label: "Others" },
-    ];
-
 
     return (
         <div>
@@ -174,28 +162,7 @@ export function TransactionForm({ onSuccess }: TransactonFormProps) {
                         name="category"
                         control={control}
                         render={({ field }) => (
-                            <Select
-                                className="w-[256px]"
-                                placeholder="Select category"
-                                value={field.value}
-                                onChange={(key) => field.onChange(key)}
-                            >
-                                <Label>Category</Label>
-                                <Select.Trigger>
-                                    <Select.Value />
-                                    <Select.Indicator />
-                                </Select.Trigger>
-                                <Select.Popover>
-                                    <ListBox>
-                                        {CATEGORIES.map((category) => (
-                                            <ListBox.Item key={category.id} id={category.id} textValue={category.label}>
-                                                {category.label}
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                        ))}
-                                    </ListBox>
-                                </Select.Popover>
-                            </Select>
+                            <CategorySelector value={field.value} onChange={(key) => field.onChange(key)} />
                         )}
                     />
                 </div>

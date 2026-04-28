@@ -92,8 +92,7 @@
     /* Afecta a los botones de HeroUI */
     .button,
     button[data-slot="base"] {
-        @apply py-5;
-        @apply text-background;
+        @apply py-5 text-white;
     }
 
     /* Afecta inputs de Aria/HeroUI */
