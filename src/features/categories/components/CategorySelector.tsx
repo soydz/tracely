@@ -1,4 +1,4 @@
-import { Select, Label, ListBox, Modal, Separator } from "@heroui/react"
+import { Select, Label, ListBox, Modal, Separator, Button } from "@heroui/react"
 import { CategoryForm } from "./CategoryForm";
 import { useState } from "react";
 import { Plus } from "lucide-react";
@@ -13,17 +13,18 @@ export function CategorySelector({ value, onChange }: Readonly<CategorySelectorP
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const {data:categories, isLoading} = useCategory();
+    const { data: categories, isLoading } = useCategory();
+
+    const selectValue = value ? String(value) : null;
 
     return (
         <>
             <Select
                 className="w-[256px]"
                 placeholder="Select one"
-                value={value}
+                value={selectValue}
                 onChange={(key) => {
-                    if (key === "create-new-category") return;
-                    onChange(String(key))
+                    onChange(String(key));
                 }}
                 isDisabled={isLoading}
             >
@@ -33,22 +34,24 @@ export function CategorySelector({ value, onChange }: Readonly<CategorySelectorP
                     <Select.Indicator />
                 </Select.Trigger>
                 <Select.Popover>
-                    <ListBox>
-                        <ListBox.Item
-                            key="create-new-category"
-                            id="create-new-category"
-                            onClick={() => setIsOpen(true)}
-                            className="text-accent font-semibold"
+                    <div className="p-2">
+                        <Button
+                            variant="ghost"
+                            className="w-full justify-start gap-2 text-accent font-semibold h-10"
+                            onPress={() => setIsOpen(true)}
                         >
-                            <Plus />
-                            Create New Category
-                        </ListBox.Item>
-
-                        <Separator />
-
+                            <Plus size={16} />
+                            <span>Create New Category</span>
+                        </Button>
+                    </div>
+                    <Separator />
+                    <ListBox>
                         {categories && categories.length > 0 && (
                             categories.map((category) => (
-                                <ListBox.Item key={String(category.id)} id={category.id} textValue={category.name}>
+                                <ListBox.Item
+                                    key={String(category.id)}
+                                    id={String(category.id)}
+                                    textValue={category.name}>
                                     {category.name}
                                     <ListBox.ItemIndicator />
                                 </ListBox.Item>

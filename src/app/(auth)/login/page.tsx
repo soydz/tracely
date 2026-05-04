@@ -5,8 +5,12 @@ export default function Login() {
     <div className="flex justify-center items-start pt-32 px-6 sm:px-0">
       <div className="w-md flex flex-col gap-10">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground tracking-tighter leading-tight">Secure Access</h2>
-          <p className="text-muted text-sm md:text-base mx-auto leading-relaxed mt-2">Return to your dashboard to manage your wealth and budgets</p>
+          <h2 className="text-4xl md:text-5xl font-serif text-foreground tracking-tighter leading-tight">
+            Secure Access
+          </h2>
+          <p className="text-muted text-sm md:text-base mx-auto leading-relaxed mt-2">
+            Return to your dashboard to manage your wealth and budgets
+          </p>
         </div>
         <LoginForm />
       </div>
