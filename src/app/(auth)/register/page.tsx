@@ -2,7 +2,7 @@ import { RegisterForm } from "@/features/auth/components/RegisterForm";
 
 export default function register() {
   return (
-    <div className="flex justify-center items-start pt-32 px-6 sm:px-0">
+    <div className="flex justify-center items-start pt-10 pb-20 sm:pt-32 sm:pb-0 px-6 sm:px-0">
       <div className="w-md flex flex-col gap-10">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-serif text-foreground tracking-tighter leading-tight">
