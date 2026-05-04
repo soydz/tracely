@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground min-h-full flex flex-col ">
         <Providers>
           <Toast.Provider placement="top" />
-          <div className="px-24 py-4 max-w-[1500] mx-auto w-full">
+          <div className="px-4 py-4 max-w-[1500] sm:mx-auto sm:w-full sm:px-10 md:px-18 lg:px-22">
             <NavLinks />
           </div>
           {children}
