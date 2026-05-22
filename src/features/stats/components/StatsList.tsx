@@ -13,7 +13,7 @@ interface StatsGridProps {
     colors?: string[];
 }
 
-export function StatsList({ stats, type, colors }: Readonly<StatsGridProps>) {
+export function StatsList({ stats, type, colors = ["gray"] }: Readonly<StatsGridProps>) {
     return (
         <div className="flex flex-col gap-3 max-w-80 w-full">
             {stats?.map((t, index) => (
@@ -21,7 +21,7 @@ export function StatsList({ stats, type, colors }: Readonly<StatsGridProps>) {
                     <div className="flex items-center gap-2">
                         <span
                             className="inline-block w-3 h-3 rounded-full shrink-0"
-                            style={{ backgroundColor: colors[index % colors.length] || "black"}}
+                            style={{ backgroundColor: colors[index % colors.length] }}
                         />
                         <span className="text-sm">{t.category}</span>
                     </div>
