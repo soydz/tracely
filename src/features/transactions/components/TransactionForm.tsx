@@ -7,6 +7,7 @@ import {
   DateField,
   Calendar,
   Separator,
+  Spinner,
 } from "@heroui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { getLocalTimeZone, parseDate, today } from "@internationalized/date";
@@ -61,7 +62,6 @@ export function TransactionForm({ onSuccess }: Readonly<TransactonFormProps>) {
   return (
     <div>
       <form
-        action=""
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-6 p-1"
       >
@@ -261,7 +261,11 @@ export function TransactionForm({ onSuccess }: Readonly<TransactonFormProps>) {
         />
 
         <Button type="submit" className="w-full" isPending={isPending}>
-          Save
+          {isPending ? (
+            <Spinner color="current"/>
+          ) : (
+            "Save"
+          )}
         </Button>
       </form>
     </div>
