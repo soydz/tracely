@@ -32,13 +32,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${manrope.variable} ${newreader.variable} h-full antialiased`}
     >
-      <body className="bg-background text-foreground min-h-full flex flex-col ">
+      <body className="bg-background text-foreground min-h-full flex flex-col items-center">
         <Providers>
           <Toast.Provider placement="top" />
-          <div className="px-4 py-4 max-w-[1500] sm:mx-auto sm:w-full sm:px-10 md:px-18 lg:px-22">
+          <div className="px-4 py-4 max-w-[1500] w-full sm:mx-auto sm:w-full sm:px-10 md:px-18 lg:px-22">
             <NavLinks />
           </div>
-          {children}
+          <main className="max-w-7xl sm:px-8 xl:p-0 w-full">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
