@@ -15,7 +15,7 @@ export function AppDatePicker({ label, value, onChange }: Readonly<AppDatePicker
       className="w-64"
       name="date"
       value={value ? parseDate(value) : null}
-      onChange={(date) => onChange?.(date.toString())}>
+      onChange={(date) => onChange?.(date ? date.toString() : "")}>
       <Label>{label}</Label>
       <DateField.Group fullWidth>
         <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
