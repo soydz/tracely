@@ -24,6 +24,10 @@ export function useCreateTransaction() {
     onSuccess: () => {
       // actualización forzosa de la lista
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
+
+      // actualiza presupuestos
+      queryClient.invalidateQueries({ queryKey: ["budgets"]});
+
       toast.success("Transaction registered successfully");
     },
     onError: (error: unknown) => {
