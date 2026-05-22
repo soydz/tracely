@@ -7,9 +7,10 @@ import { useCategory } from "../hooks/useCategory";
 interface CategorySelectorProps {
     value: string | number;
     onChange: (value: string) => void;
+    isDisable?: boolean;
 }
 
-export function CategorySelector({ value, onChange }: Readonly<CategorySelectorProps>) {
+export function CategorySelector({ value, onChange, isDisable = false }: Readonly<CategorySelectorProps>) {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,15 +21,15 @@ export function CategorySelector({ value, onChange }: Readonly<CategorySelectorP
     return (
         <>
             <Select
-                className="w-[256px]"
+                className="min-w-64"
                 placeholder="Select one"
                 value={selectValue}
                 onChange={(key) => {
                     onChange(String(key));
                 }}
-                isDisabled={isLoading}
+                isDisabled={isLoading || isDisable}
             >
-                <Label>State</Label>
+                <Label>Category</Label>
                 <Select.Trigger>
                     <Select.Value />
                     <Select.Indicator />
