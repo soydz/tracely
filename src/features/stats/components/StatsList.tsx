@@ -1,3 +1,4 @@
+import { CHART_COLORS } from "@/shared/constants/colors";
 import { formatThousands } from "@/shared/utils";
 import { Chip } from "@heroui/react";
 
@@ -13,7 +14,7 @@ interface StatsGridProps {
     colors?: string[];
 }
 
-export function StatsList({ stats, type, colors = ["gray"] }: Readonly<StatsGridProps>) {
+export function StatsList({ stats, type, colors = CHART_COLORS }: Readonly<StatsGridProps>) {
     return (
         <div className="flex flex-col gap-3 max-w-80 w-full">
             {stats?.map((t, index) => (
