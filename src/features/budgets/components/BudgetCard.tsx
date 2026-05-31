@@ -15,8 +15,8 @@ export function BudgetCard({ budget, handleUpdate }: Readonly<BudgetCardProps>) 
     return (
         <Card className="group relative p-6 bg-surface/60 hover:border-accent transition-all duration-300">
             <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all z-10">
-                <Button variant="ghost" isIconOnly className="hover:cursor-pointer" onClick={() => handleUpdate(budget)}>
-                    <Pencil size={14} />
+                <Button variant="ghost" isIconOnly className="hover:cursor-pointer text-foreground" onClick={() => handleUpdate(budget)}>
+                    <Pencil className="size-5"/>
                 </Button>
             </div>
             <div className="flex flex-col items-center gap-4">

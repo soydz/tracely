@@ -19,6 +19,9 @@ export function BudgetForm({ isOpen, onSuccess, initialData }: Readonly<BudgetFo
     const { mutate: updateBudget, isPending: isPendingUpdate } = useUpdateBudget();
     const { data: categories } = useCategory();
 
+    const isPending = initialData ? isPendingUpdate : isPendingCreate;
+    const buttonText = initialData ? "Update" : "Create";
+
     const initialCategoryId = useMemo(() => {
         if (!initialData?.categoryName) return 0;
 
@@ -166,10 +169,10 @@ export function BudgetForm({ isOpen, onSuccess, initialData }: Readonly<BudgetFo
                                             type="submit"
                                             isPending={initialData ? isPendingUpdate : isPendingCreate}
                                         >
-                                            {isPendingCreate || isPendingUpdate ? (
+                                            {isPending ? (
                                                 <Spinner color="current" />
                                             ) : (
-                                                initialData ? "Update" : "Create"
+                                                buttonText
                                             )}
                                         </Button>
                                     </div>
