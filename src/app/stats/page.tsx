@@ -1,9 +1,8 @@
 "use client"
 
-import { StatsList } from "@/features/stats/components/StatsList";
+import { StatsGraph } from "@/features/stats/components/StatsGraph";
 import { useTransaction } from "@/features/transactions/hooks/useTransactions";
-import { AppDatePicker, DonutChart } from "@/shared/components";
-import { CHART_COLORS } from "@/shared/constants/colors";
+import { AppDatePicker } from "@/shared/components";
 import { aggregateByCategory } from "@/shared/utils";
 import { useMemo, useState } from "react";
 
@@ -71,46 +70,17 @@ export default function Stats() {
                 />
             </div>
 
-            <div className="w-full grid grid-cols-1 items-start lg:grid-cols-2">
-                <div className="grid grid-cols-1 w-full">
-                    {categoryStats?.incomeTransactions.length > 0 ? (
-                        <DonutChart
-                            data={categoryStats.incomeTransactions}
-                            dataKey="percentage"
-                            nameKey="category"
-                        />
-                    ) : (
-                        <p className="mt-10 text-center text-muted">No expenses in this date range</p>
-                    )}
+            <div className="w-full grid grid-cols-1 items-start py-4 lg:grid-cols-2">
 
-                    <div className="flex justify-center">
-                        <StatsList
-                            stats={categoryStats?.incomeTransactions}
-                            type="EXPENSE"
-                            colors={CHART_COLORS}
-                        />
-                    </div>
-                </div>
+                <StatsGraph
+                    transactions={categoryStats ? categoryStats.incomeTransactions : []}
+                    title="Income"
+                />
 
-                <div className="grid grid-cols-1 w-full">
-                    {categoryStats?.expenseTransactions.length > 0 ? (
-                        <DonutChart
-                            data={categoryStats.expenseTransactions}
-                            dataKey="percentage"
-                            nameKey="category"
-                        />
-                    ) : (
-                        <p className="mt-10 text-center text-muted">No expenses in this date range</p>
-                    )}
-
-                    <div className="flex justify-center">
-                        <StatsList
-                            stats={categoryStats?.expenseTransactions}
-                            type="EXPENSE"
-                            colors={CHART_COLORS}
-                        />
-                    </div>
-                </div>
+                <StatsGraph
+                    transactions={categoryStats ? categoryStats.expenseTransactions : []}
+                    title="Expense"
+                />
             </div>
         </div>
     )
