@@ -31,6 +31,13 @@
 *   **Seamless Sessions**: Secure, persistent authentication that keeps you logged in safely while maintaining a fluid experience.
 *   **Protected Access**: Multi-layered security guards that ensure your sensitive financial data is only accessible to you.
 
+### 💰 Budget Management
+*   **Category-Based Allocation**: Set monthly budgets for each spending category with clear progress indicators.
+*   **Full Lifecycle**: Create, edit, and remove budgets on the fly with an intuitive form and grid overview.
+### 📊 Statistical Analytics
+*   **Visual Breakdown**: Interactive donut charts that reveal how your income and expenses distribute across categories.
+*   **Flexible Date Filtering**: Narrow down any period with a date range picker and see aggregated stats update in real time.
+
 
 ## 🖼️ Visual Showcase
 A glimpse into the Tracely experience, where precision meets a refined interface.
@@ -55,6 +62,17 @@ From creation to deletion, every interaction is designed for speed and clarity.
 ### 📅 Temporal Analysis
 Precise control over your financial history with the integrated month and year picker.
 ![Filter Date](/public/images/filter-date.png)
+
+### 💰 Budget Control
+Track your spending limits per category with visual progress bars and quick editing.
+![Budgets](/public/images/budgets.png)
+![Budget Form](/public/images/budget-form.png)
+![Budget Update](/public/images/budget-update.png)
+
+### 📊 Analytics Dashboard
+Understand your financial patterns through category-driven charts and detailed breakdowns.
+![Stats](/public/images/stats.png)
+
 ### 🔐 Secure Entry
 A focused and distraction-free authentication experience.
 ![Login](/public/images/login.png)
